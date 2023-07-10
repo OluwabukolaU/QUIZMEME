@@ -1,9 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, logout
 
 # Create your views here.
 def sign_up(request):
-     return HttpResponse("<h1>Sign Up</h1>")
+     if request.method == "POST":
+          username = request.POST.get("username")
+          email = request.POST.get("email")
+          password = request.POST.get("password")
+          print(f"{username}: {email}: {password}")
+          return HttpResponse("Request Sent")
+     return render(request, 'auth/sign_up.html')
 
 def sign_out(request):
-     return HttpResponse("<h1>SIgn Out</h1>")
+     logout(request)
+     return HttpResponseRedirect("/")

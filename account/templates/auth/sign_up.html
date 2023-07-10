@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<style>
+    input{
+        height: 40px;
+        width: 300px;
+    }
+</style>
+<body>
+    <center>
+        <form action="/auths/sign_up" method="post">
+            {% csrf_token %}
+            <h1>Sign Up</h1>
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="email" name="email" required placeholder="Email"><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+</body>
+</html>

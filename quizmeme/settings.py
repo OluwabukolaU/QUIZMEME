@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-34btyl9^zf9f)+gx!+9$d0nnq!2xwyj52#@yayf6+ktzxr6253
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = ['https://hardope-organic-funicular-qx97j759r4j2xxjv-8000.preview.app.github.dev']
 
 
 # Application definition

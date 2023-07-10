@@ -6,7 +6,7 @@
      <title>Sign In</title>
 </head>
 <body>
-     <form action="/auth/sign_in" method="post">
+     <form action="/auths/sign_in" method="post">
           {% csrf_token %}
           <input name="username" type="text" placeholder="Username" required>
           <input name="password" type="password" placeholder="Password" required>

@@ -5,9 +5,9 @@ import smtplib
 
 
 def send_mail(to, subject, body):
-    sender = "email_address@gmail.com"
+    sender = "quizmeme2023@gmail.com"
     recipient = to
-    password = "16_digit_password"
+    password = "emdfdgwwljpvtfpf"
 
     mail = EmailMessage()
     mail["From"] = sender
@@ -21,3 +21,4 @@ def send_mail(to, subject, body):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:
         smtp.login(sender, password)
         smtp.sendmail(sender, recipient, mail.as_string())
+

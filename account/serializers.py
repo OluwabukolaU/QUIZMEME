@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from django.contrib.auth.models import User
-from account.sendmail import send_mail
+from account.sendmail import send_verification
+from .models import Verification
 
 class UserSerializer (ModelSerializer):
     class Meta:
@@ -15,8 +16,10 @@ class UserSerializer (ModelSerializer):
         }
 
     def create(self, validated_data):
+        domain = self.context['request'].META['HTTP_HOST']
         user = User.objects.create_user(**validated_data)
         user.is_active = False
         user.save()
-        send_mail(user.email, "Account confirmation" , "Your account was succesfully created")
+        Verification.objects.create(user=user)
+        send_verification(user, domain)
         return user

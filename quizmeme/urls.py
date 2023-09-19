@@ -33,5 +33,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('users/', include('account.urls')),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('quiz/', include('quiz.urls')),
     
 ]

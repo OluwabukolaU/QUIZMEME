@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUIZMEME</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/script/auth.js"></script>
 </head>
 <style>
     input{
@@ -16,15 +18,17 @@
 </style>
 <body>
     <center>
-        <form action="#">
+        <form id="login-form">
             <h1>Login</h1>
 
-            <div id="login_form">
+            <b id="error"></b>
+
+            <div id="details">
                 <input type="text" id="username" placeholder="Username" required><br>
                 <input type="password" id="password" placeholder="Password" required><br>
             </div>
 
-            <div id="login_buttons">
+            <div id="buttons">
                 <input type="submit" value="Login"><br>
                 <input type="button" value="Register">
         </form>

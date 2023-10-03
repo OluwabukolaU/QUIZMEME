@@ -29,7 +29,7 @@ class CreateQuestion(APIView):
     )
     def post(self, request, quiz_id):
         quiz = self.get_object(quiz_id)
-        serializer = QuestionSerializer(data=request.data)
+        serializer = QuestionSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save(quiz=quiz)
             return Response(serializer.data, status=status.HTTP_201_CREATED)

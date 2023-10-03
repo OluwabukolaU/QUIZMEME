@@ -70,3 +70,28 @@ class GetQuiz(APIView):
         quiz = self.get_object(pk)
         quiz.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class GetMyQuizzes(APIView):
+    """
+    get:
+    Get all quizzes created by the logged in user.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        quizzes = Quiz.objects.filter(author=request.user)
+        serializer = QuizSerializer(quizzes, many=True)     
+        for i in serializer.data:
+            questions = Question.objects.filter(quiz=i["id"])
+            i["questions"] = []
+            for question in questions:
+                question_serializer = QuestionSerializer(question)
+                full_question = question_serializer.data
+                choices = Choice.objects.filter(question=question.id)
+                full_question["choices"] = []
+                for choice in choices:
+                    choice_serializer = ChoiceSerializer(choice)
+                    full_question["choices"].append(choice_serializer.data)
+                i["questions"].append(full_question)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

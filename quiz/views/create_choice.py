@@ -29,7 +29,7 @@ class CreateChoice(APIView):
     )
     def post(self, request, question_id):
         question = self.get_object(question_id)
-        serializer = ChoiceSerializer(data=request.data)
+        serializer = ChoiceSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save(question=question)
             return Response(serializer.data, status=status.HTTP_201_CREATED)

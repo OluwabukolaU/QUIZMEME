@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from quiz.permissions import IsAuthorOrReadOnly
 from quiz.models import Choice
-from quiz.serializers import QuestionSerializer
+from quiz.serializers import ChoiceSerializer
 from drf_yasg.utils import swagger_auto_schema
 from django.shortcuts import get_object_or_404
 
@@ -22,25 +22,25 @@ class GetChoice(APIView):
     
     @swagger_auto_schema(
         responses={
-            200: QuestionSerializer(),
+            200: ChoiceSerializer(),
             404: "Choice not found."
         }
     )
     def get(self, request, pk):
         choice = self.get_object(pk)
-        serializer = QuestionSerializer(choice)
+        serializer = ChoiceSerializer(choice)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     @swagger_auto_schema(
-        request_body=QuestionSerializer(),
+        request_body=ChoiceSerializer(),
         responses={
-            200: QuestionSerializer(),
+            200: ChoiceSerializer(),
             400: "Bad request."
         }
     )
     def put(self, request, pk):
         choice = self.get_object(pk)
-        serializer = QuestionSerializer(choice, data=request.data)
+        serializer = ChoiceSerializer(choice, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

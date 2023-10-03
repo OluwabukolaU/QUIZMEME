@@ -31,8 +31,8 @@ schema_view = swagger_get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
-    path('users/', include('account.urls')),
+    path('api/account/', include('account.urls')),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('quiz/', include('quiz.urls')),
+    path('api/quiz/', include('quiz.urls')),
     
 ]

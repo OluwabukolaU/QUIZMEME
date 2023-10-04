@@ -30,9 +30,29 @@
 
             <div id="buttons">
                 <input type="submit" value="Login"><br>
-                <input type="button" value="Register">
+                <input type="button" class="toggle_auth" value="Register">
         </form>
     </center>
     
+
+    <center>
+        <form id="register-form" style="display: none;">
+            <h1>Register</h1>
+
+            <b id="error"></b>
+
+            <div id="details">
+                <input type="text" id="username" placeholder="Username" required><br>
+                <input type="password" id="password" placeholder="Password" required><br>
+                <input type="password" id="confirm-password" placeholder="Confirm Password" required><br>
+                <input type="email" id="email" placeholder="Email" required><br>
+            </div>
+
+            <div id="buttons">
+                <input type="submit" value="Register"><br>
+                <input type="button" class="toggle_auth" value="Login">
+            </div>
+        </form>
+    </center>
 </body>
 </html>

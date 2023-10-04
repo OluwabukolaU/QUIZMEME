@@ -4,5 +4,5 @@ from uuid import uuid4
 
 # Create your models here.
 class Verification(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     token = models.UUIDField(default=uuid4, editable=False)

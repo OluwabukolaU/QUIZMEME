@@ -27,7 +27,7 @@ def send_verification(user, domain):
     verification = Verification.objects.get(user=user)
 
     # Build the verification URL
-    url = f"http://{domain}/users/verify/{user.id}/{verification.token}"
+    url = f"http://{domain}/api/account/verify/{user.id}/{verification.token}"
 
     # Build the email body
     body = f"Hey, Welcome to Quizmeme.\n\nClick the link below to verify your account:\n\n{url}"

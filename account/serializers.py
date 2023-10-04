@@ -17,7 +17,7 @@ class UserSerializer (ModelSerializer):
 
     def create(self, validated_data):
         domain = self.context['request'].META['HTTP_HOST']
-        user = User.objects.create_user(**validated_data)
+        user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
         user.is_active = False
         user.save()
         Verification.objects.create(user=user)

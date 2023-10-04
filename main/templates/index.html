@@ -5,25 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUIZMEME</title>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/script/index.js"></script>
+<style>
+    #nav-bar{
+        width: 97%;
+        height: 50px;
+        background-color: #1DA1F2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    #nav-bar h1{
+        color: white;
+        font-size: 30px;
+    }
+
+    #auth{
+        color: white;
+        font-size: 20px;
+    }
+
+    #user{
+        color: white;
+        font-size: 20px;
+    }
+
+    #my-quizes{
+        width: 97%;
+        height: 100%;
+        padding: 20px;
+    }
+
+    #my-quizes table{
+        width: 100%;
+    }
+
+    #my-quizes table th{
+        font-size: 20px;
+    }
+
+    #my-quizes table td{
+        font-size: 18px;
+    }
+
+    #my-quizes table tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
+
+    #my-quizes table tr:hover{
+        background-color: #ddd;
+    }
+
+    #my-quizes table th, #my-quizes table td{
+        padding: 15px;
+    }
+
+</style>
 <body>
-    <center>
+    <div id="nav-bar">
         <h1>QUIZMEME</h1>
 
-        <h3>
-            {% if user.is_authenticated %}
-                <a href="/logout">Logout</a>
-            {% else %}
-                <a href="/auth">Login</a>
-            {% endif %}
-        </h3>
-
-        <h3>
+        <div id="user">
             {% if user.is_authenticated %}
                 <b>Hello, {{user.username}}.</b>
             {% else %}
                 <b>Hello, Guest.</b>
             {% endif %}
-        </h3>
-    </center>
+        </div>
+
+        <div id="auth">
+            {% if user.is_authenticated %}
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/auth">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="my-quizes">
+        <center>
+            <h1>My Quizes</h1>
+            <table border="1" id="quiz-list">
+
+            </table>
+        </center>
+    </div>
 </body>
 </html>
